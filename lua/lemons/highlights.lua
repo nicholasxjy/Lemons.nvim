@@ -6,7 +6,7 @@ function M.get_highlights(c, opts)
     return {
         Normal = { fg = c.white, bg = c.black },
         NormalFloat = { link = "Normal" },
-        FloatBorder = { bg = c.black, fg = c.light_gray },
+        FloatBorder = { bg = c.black, fg = c.navy },
         ColorColumn = { bg = c.dark_gray },
         Conceal = { fg = c.darker_white },
         CurSearch = { bg = c.yellow, fg = c.black },
@@ -33,11 +33,11 @@ function M.get_highlights(c, opts)
         MoreMsg = { fg = c.yellow },
         Title = { fg = c.yellow, bold = true },
         Pmenu = { bg = c.dark_gray, fg = c.white },
-        PmenuSel = { fg = c.black, bg = c.yellow },
+        PmenuSel = { fg = c.black, bg = c.br_yellow },
         PmenuExtra = { fg = c.darker_white },
         PmenuSbar = { bg = c.gray },
         PmenuThumb = { bg = c.dark_white },
-        PmenuMatch = { bold = true },
+        PmenuMatch = { fg = c.light_yellow, bold = true },
         PmenuMatchSel = { bold = true, sp = c.black },
         Question = { fg = c.yellow },
         QuickFixLine = { bold = true, fg = c.yellow },
@@ -62,7 +62,7 @@ function M.get_highlights(c, opts)
         String = { fg = c.green },
         Identifier = { fg = c.white },
         -- StorageClass = { fg = c.white, bold = true },
-        Type = { fg = c.lime },
+        Type = { fg = c.lime, bold = true },
         Constant = { fg = c.pink },
         Boolean = { link = "Number" },
         Character = { link = "Constant" },
@@ -73,7 +73,7 @@ function M.get_highlights(c, opts)
         Special = { fg = c.light_cyan },
         Delimiter = { fg = c.dark_white },
         Statement = { link = "Keyword" },
-        Keyword = { fg = c.orange },
+        Keyword = { fg = c.orange, bold = true },
         Structure = { fg = c.white },
         Todo = { fg = c.cyan },
         PreProc = { fg = c.dark_white },
@@ -125,9 +125,13 @@ function M.get_highlights(c, opts)
         manReference = { fg = c.blue },
 
         -- Treesitter
+        ["@attribute"] = { fg = c.purple },
         ["@variable"] = { fg = c.white },
         ["@keyword.directive"] = { link = "PreProc" },
-        ["@type.builtin"] = { fg = c.cyan },
+        ["@keyword.modifier"] = { fg = c.light_blue },
+        ["@keyword.import"] = { fg = c.light_cyan, bold = true },
+        ["@keyword.export"] = { fg = c.light_cyan, bold = true },
+        ["@type.builtin"] = { fg = c.cyan, bold = true },
         ["@attribute.builtin"] = { fg = c.cyan },
         ["@function.builtin"] = { fg = c.cyan },
         ["@variable.builtin"] = { fg = c.cyan },
@@ -135,6 +139,9 @@ function M.get_highlights(c, opts)
         ["@constant.builtin"] = { fg = c.cyan },
         ["@module.builtin"] = { fg = c.cyan },
         ["@tag.builtin"] = { fg = c.cyan },
+        ["@tag.attribute"] = { fg = c.light_cyan, italic = true },
+        ["@tag.tsx"] = { fg = c.cyan, bold = true },
+        ["@tag.jsx"] = { fg = c.cyan, bold = true },
         ["@constructor"] = { fg = c.lime },
         ["@markup.heading.1"] = { fg = c.yellow, bold = true },
         ["@markup.heading.2"] = { fg = c.orange, bold = true },
@@ -157,6 +164,10 @@ function M.get_highlights(c, opts)
         ["@lsp.type.formatSpecifier"] = { link = "Special" },
         ["@lsp.type.escapeSequence"] = { link = "@string.escape" },
         ["@lsp.mod.callable"] = { link = "Function" },
+        ["@lsp.type.interface"] = { fg = c.brown, bold = true, italic = true },
+        ["@lsp.type.namespace"] = { fg = c.dark_pink },
+        ["@lsp.type.enum"] = { fg = c.aqua, bold = true },
+        ["@lsp.type.modifier"] = { link = "@keyword.modifier" },
 
         --- PLUGINS ---
         -- blink.cmp
@@ -170,27 +181,27 @@ function M.get_highlights(c, opts)
         BlinkCmpScrollBarGutter = { link = "PmenuSbar" },
         BlinkCmpKind = { link = "NormalFloat" },
         BlinkCmpKindFolder = { fg = c.orange },
-        BlinkCmpKindFile = { fg = c.white },
-        BlinkCmpKindText = { fg = c.dark_white },
+        BlinkCmpKindFile = { fg = c.light_blue },
+        BlinkCmpKindText = { fg = c.darker_white },
         BlinkCmpKindMethod = { fg = c.yellow },
         BlinkCmpKindFunction = { fg = c.yellow },
         BlinkCmpKindField = { fg = c.blue },
-        BlinkCmpKindVariable = { fg = c.white },
+        BlinkCmpKindVariable = { fg = c.red },
         BlinkCmpKindProperty = { fg = c.light_cyan },
         BlinkCmpKindClass = { fg = c.lime },
         BlinkCmpKindStruct = { fg = c.lime },
-        BlinkCmpKindEnum = { fg = c.lime },
-        BlinkCmpKindInterface = { fg = c.lime },
-        BlinkCmpKindModule = { fg = c.cyan },
+        BlinkCmpKindEnum = { fg = c.aqua },
+        BlinkCmpKindInterface = { fg = c.brown },
+        BlinkCmpKindModule = { fg = c.light_purple },
         BlinkCmpKindPackage = { fg = c.orange },
-        BlinkCmpKindNameSpace = { fg = c.cyan },
+        BlinkCmpKindNameSpace = { fg = c.light_purple },
         BlinkCmpKindObject = { fg = c.blue },
         BlinkCmpKindValue = { fg = c.pink },
         BlinkCmpKindNumber = { fg = c.orange },
         BlinkCmpKindConstant = { fg = c.pink },
         BlinkCmpKindEnumMember = { fg = c.pink },
         BlinkCmpKindNull = { fg = c.white },
-        BlinkCmpKindSnippet = { fg = c.dark_white },
+        BlinkCmpKindSnippet = { fg = c.pink },
         BlinkCmpKindColor = { fg = c.red },
         BlinkCmpKindKeyword = { fg = c.orange },
         BlinkCmpKindString = { fg = c.green },
@@ -242,6 +253,31 @@ function M.get_highlights(c, opts)
         LuaLineDiffAdd = { link = "Added" },
         LuaLineDiffDelete = { link = "Removed" },
         LuaLineDiffChange = { link = "Changed" },
+
+        -- snacks.nvim
+        -- indent
+        SnacksPickerMatch = { fg = c.light_yellow, bold = true },
+        SnacksIndentChunkRed = { link = "RainbowDelimiterRed" },
+        SnacksIndentChunkOrange = { link = "RainbowDelimiterOrange" },
+        SnacksIndentChunkYellow = { link = "RainbowDelimiterYellow" },
+        SnacksIndentChunkGreen = { link = "RainbowDelimiterGreen" },
+        SnacksIndentChunkCyan = { link = "RainbowDelimiterCyan" },
+        SnacksIndentChunkBlue = { link = "RainbowDelimiterBlue" },
+        SnacksIndentChunkViolet = { link = "RainbowDelimiterViolet" },
+        SnacksIndentRed = { link = "RainbowDelimiterRed" },
+        SnacksIndentOrange = { link = "RainbowDelimiterOrange" },
+        SnacksIndentYellow = { link = "RainbowDelimiterYellow" },
+        SnacksIndentGreen = { link = "RainbowDelimiterGreen" },
+        SnacksIndentCyan = { link = "RainbowDelimiterCyan" },
+        SnacksIndentBlue = { link = "RainbowDelimiterBlue" },
+        SnacksIndentViolet = { link = "RainbowDelimiterViolet" },
+        SnacksIndentScopeRed = { link = "RainbowDelimiterRed" },
+        SnacksIndentScopeOrange = { link = "RainbowDelimiterOrange" },
+        SnacksIndentScopeYellow = { link = "RainbowDelimiterYellow" },
+        SnacksIndentScopeGreen = { link = "RainbowDelimiterGreen" },
+        SnacksIndentScopeCyan = { link = "RainbowDelimiterCyan" },
+        SnacksIndentScopeBlue = { link = "RainbowDelimiterBlue" },
+        SnacksIndentScopeViolet = { link = "RainbowDelimiterViolet" },
     }
 end
 
@@ -264,4 +300,19 @@ function M.set_terminal_colors(c)
     vim.g.terminal_color_14 = c.light_cyan
     vim.g.terminal_color_15 = c.white
 end
+
+local M = {}
+
+---@param colors lemons.Colors
+function M.set(colors, cfg)
+    local highlights = get_highlights(colors)
+    if cfg and cfg.overrides then
+        highlights = vim.tbl_extend("force", highlights, cfg.overrides(colors))
+    end
+    for name, val in pairs(highlights) do
+        vim.api.nvim_set_hl(0, name, val)
+    end
+    set_terminal_colors(colors)
+end
+
 return M

@@ -1,26 +1,33 @@
 ---@class lemons.Colors
----@field black string              |"#040404"
----@field dark_gray string          |"#161616"
----@field gray string               |"#212121"
----@field light_gray string         |"#565656"
----@field darker_white string       |"#808080"
----@field dark_white string         |"#cacaca"
----@field white string              |"#f0f0f0"
----@field red string                |"#ed505e"
----@field dark_green string         |"#0b1b10"
----@field lime string               |"#2ed592"
----@field green string              |"#2ed563"
----@field dark_yellow string        |"#1d190d"
----@field orange string             |"#fa8a49"
----@field yellow string             |"#f0be42"
----@field blue string               |"#5088ed"
----@field pink string               |"#f45ab4"
----@field dark_cyan string          |"#0c1918"
----@field cyan string               |"#37c3b5"
----@field light_cyan string         |"#6ad8ed"
-
-local M = {}
-
+---@field black string
+---@field dark_gray string
+---@field gray string
+---@field light_gray string
+---@field darker_white string
+---@field dark_white string
+---@field white string
+---@field red string
+---@field dark_green string
+---@field lime string
+---@field green string
+---@field dark_yellow string
+---@field orange string
+---@field yellow string
+---@field blue string
+---@field pink string
+---@field dark_cyan string
+---@field cyan string
+---@field light_cyan string
+---@field brown string
+---@field navy string
+---@field aqua string
+---@field light_blue string
+---@field dark_blue string
+---@field purple string
+---@field light_purple string
+---@field light_yellow string
+---@field dark_pink string
+---@field br_yellow string
 -- stylua: ignore
 ---@type lemons.Colors
 M.defaults = {
@@ -33,16 +40,26 @@ M.defaults = {
     white        = "#f0f0f0",
     red          = "#ed505e",
     dark_green   = "#0b1b10",
+    aqua         = "#0fb9e0",
     lime         = "#2ed592",
     green        = "#2ed563",
-    dark_yellow  = "#1d190d",
     orange       = "#fa8a49",
+    dark_yellow  = "#1d190d",
+    light_yellow = "#ffbe00",
     yellow       = "#f0be42",
+    dark_blue    = "#2782d4",
     blue         = "#5088ed",
+    light_blue   = "#7BA1D0",
+    dark_pink    = "#B376B3",
     pink         = "#f45ab4",
     dark_cyan    = "#0c1918",
     cyan         = "#37c3b5",
     light_cyan   = "#6ad8ed",
+    brown        = "#99582a",
+    navy         = "#3B38A0",
+    purple       = "#be9af7",
+    light_purple = "#8372Ba",
+    br_yellow    = "#E7C547",
 }
 
 M.colors = M.defaults
