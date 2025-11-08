@@ -33,6 +33,7 @@
 ---@field tomato string
 ---@field cranberry string
 ---@field br_green string
+---@field light_white string
 -- stylua: ignore
 ---@type lemons.Colors
 M.defaults = {
@@ -43,6 +44,7 @@ M.defaults = {
     darker_white = "#808080",
     dark_white   = "#cacaca",
     white        = "#dacfe4",
+    light_white  = "#645775",
     tomato       = "#FF6347",
     red          = "#ed505e",
     cranberry    = "#CD5C5C",

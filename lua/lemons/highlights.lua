@@ -1,12 +1,13 @@
 local M = {}
 
 ---@param c lemons.Colors
----@param opts lemons.Config
-function M.get_highlights(c, opts)
+local function get_highlights(c)
+    local cfg = vim.g.lemons_config or {}
+    local bg = cfg.transparent and "NONE" or c.black
     return {
-        Normal = { fg = c.white, bg = c.black },
+        Normal = { fg = c.white, bg = bg },
         NormalFloat = { link = "Normal" },
-        FloatBorder = { bg = c.black, fg = c.navy },
+        FloatBorder = { bg = bg, fg = c.navy },
         ColorColumn = { bg = c.dark_gray },
         Conceal = { fg = c.darker_white },
         CurSearch = { bg = c.yellow, fg = c.black },
@@ -71,7 +72,7 @@ function M.get_highlights(c, opts)
         Label = { fg = c.dark_white },
         Operator = { fg = c.red },
         Special = { fg = c.light_cyan },
-        Delimiter = { fg = c.dark_white },
+        Delimiter = { fg = c.light_white },
         Statement = { link = "Keyword" },
         Keyword = { fg = c.orange },
         Structure = { fg = c.white },
@@ -308,12 +309,12 @@ function M.set_terminal_colors(c)
 end
 
 local M = {}
-
 ---@param colors lemons.Colors
-function M.set(colors, cfg)
+function M.set(colors)
+    local cfg = vim.g.lemons_config or {}
     local highlights = get_highlights(colors)
     if cfg and cfg.overrides then
-        highlights = vim.tbl_extend("force", highlights, cfg.overrides(colors))
+        highlights = vim.tbl_extend("force", highlights, cfg.overrides(colors) or {})
     end
     for name, val in pairs(highlights) do
         vim.api.nvim_set_hl(0, name, val)

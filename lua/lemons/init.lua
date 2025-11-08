@@ -8,9 +8,15 @@ function M.setup(opts)
     M.options = config.setup(opts)
 end
 
+local default_opts = {
+    transparent = false,
+}
+
 function M.load()
     vim.cmd.highlight("clear")
-    vim.cmd.syntax("reset")
+    if vim.fn.exists("syntax_on") then
+        vim.cmd.syntax("reset")
+    end
 
     vim.o.termguicolors = true
     vim.o.background = "dark"
@@ -29,5 +35,16 @@ function M.load()
         hi.set_terminal_colors(colors)
     end
 end
+
+---@class ThemeOptions
+---@field transparent boolean?
+---@field overrides fun(colors: lemons.Colors):table<string, any>?
+---@param opts ThemeOptions?
+function M.setup(opts)
+    vim.g.lemons_config = vim.tbl_extend("force", vim.g.lemons_config or {}, default_opts)
+    vim.g.lemons_config = vim.tbl_extend("force", vim.g.lemons_config or {}, opts or {})
+end
+
+M.colorscheme = M.load
 
 return M
