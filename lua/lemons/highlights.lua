@@ -37,7 +37,7 @@ function M.get_highlights(c, opts)
         PmenuExtra = { fg = c.darker_white },
         PmenuSbar = { bg = c.gray },
         PmenuThumb = { bg = c.dark_white },
-        PmenuMatch = { fg = c.light_yellow, bold = true },
+        PmenuMatch = { fg = c.purered, bold = true },
         PmenuMatchSel = { bold = true, sp = c.black },
         Question = { fg = c.yellow },
         QuickFixLine = { bold = true, fg = c.yellow },
@@ -73,7 +73,7 @@ function M.get_highlights(c, opts)
         Special = { fg = c.light_cyan },
         Delimiter = { fg = c.dark_white },
         Statement = { link = "Keyword" },
-        Keyword = { fg = c.orange, bold = true },
+        Keyword = { fg = c.orange },
         Structure = { fg = c.white },
         Todo = { fg = c.cyan },
         PreProc = { fg = c.dark_white },
@@ -105,7 +105,7 @@ function M.get_highlights(c, opts)
         DiagnosticUnderlineOk = opts.undercurl and { undercurl = true, sp = c.green }
             or { underline = true, sp = c.green },
         DiagnosticDeprecated = { strikethrough = true, fg = c.darker_white },
-        DiagnosticUnused = { link = "Comment" },
+        DiagnosticUnused = { link = "Comment", undercurl = true },
         DiagnosticSignError = { fg = c.red, bold = true },
         DiagnosticSignWarn = { fg = c.yellow, bold = true },
         DiagnosticSignInfo = { fg = c.blue, bold = true },
@@ -127,17 +127,20 @@ function M.get_highlights(c, opts)
         -- Treesitter
         ["@attribute"] = { fg = c.purple },
         ["@variable"] = { fg = c.white },
+        ["@variable.parameter"] = { fg = c.light_pink },
         ["@keyword.directive"] = { link = "PreProc" },
-        ["@keyword.modifier"] = { fg = c.light_blue },
+        ["@keyword.modifier"] = { fg = c.light_blue, italic = true, bold = true },
         ["@keyword.import"] = { fg = c.light_cyan, bold = true },
         ["@keyword.export"] = { fg = c.light_cyan, bold = true },
+        ["@keyword.return"] = { fg = c.light_yellow, bold = true, italic = true },
         ["@type.builtin"] = { fg = c.cyan, bold = true },
         ["@attribute.builtin"] = { fg = c.cyan },
         ["@function.builtin"] = { fg = c.cyan },
-        ["@variable.builtin"] = { fg = c.cyan },
+        ["@variable.builtin"] = { fg = c.cranberry },
         ["@variable.parameter.builtin"] = { fg = c.cyan },
         ["@constant.builtin"] = { fg = c.cyan },
-        ["@module.builtin"] = { fg = c.cyan },
+        ["@module.builtin"] = { fg = c.dark_pink, italic = true },
+        ["@module"] = { fg = c.dark_pink, italic = true },
         ["@tag.builtin"] = { fg = c.cyan },
         ["@tag.attribute"] = { fg = c.light_cyan, italic = true },
         ["@tag.tsx"] = { fg = c.cyan, bold = true },
@@ -165,10 +168,13 @@ function M.get_highlights(c, opts)
         ["@lsp.type.escapeSequence"] = { link = "@string.escape" },
         ["@lsp.mod.callable"] = { link = "Function" },
         ["@lsp.type.interface"] = { fg = c.brown, bold = true, italic = true },
-        ["@lsp.type.namespace"] = { fg = c.dark_pink },
+        ["@lsp.type.namespace"] = { link = "@module" },
         ["@lsp.type.enum"] = { fg = c.aqua, bold = true },
+        ["@lsp.type.enumMember"] = { fg = c.br_green, bold = true },
         ["@lsp.type.modifier"] = { link = "@keyword.modifier" },
-
+        ["@lsp.typemod.class.defaultLibrary"] = { fg = c.tomato },
+        ["@lsp.typemod.method.defaultLibrary"] = { link = "@function.builtin" },
+        ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
         --- PLUGINS ---
         -- blink.cmp
         BlinkCmpMenu = { link = "NormalFloat" },
@@ -255,8 +261,8 @@ function M.get_highlights(c, opts)
         LuaLineDiffChange = { link = "Changed" },
 
         -- snacks.nvim
-        -- indent
-        SnacksPickerMatch = { fg = c.light_yellow, bold = true },
+        SnacksPickerMatch = { fg = c.purered, bold = true },
+
         SnacksIndentChunkRed = { link = "RainbowDelimiterRed" },
         SnacksIndentChunkOrange = { link = "RainbowDelimiterOrange" },
         SnacksIndentChunkYellow = { link = "RainbowDelimiterYellow" },

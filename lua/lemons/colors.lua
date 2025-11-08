@@ -28,6 +28,11 @@
 ---@field light_yellow string
 ---@field dark_pink string
 ---@field br_yellow string
+---@field purered string
+---@field light_pink string
+---@field tomato string
+---@field cranberry string
+---@field br_green string
 -- stylua: ignore
 ---@type lemons.Colors
 M.defaults = {
@@ -37,9 +42,12 @@ M.defaults = {
     light_gray   = "#565656",
     darker_white = "#808080",
     dark_white   = "#cacaca",
-    white        = "#f0f0f0",
+    white        = "#dacfe4",
+    tomato       = "#FF6347",
     red          = "#ed505e",
+    cranberry    = "#CD5C5C",
     dark_green   = "#0b1b10",
+    br_green     = "#9EC410",
     aqua         = "#0fb9e0",
     lime         = "#2ed592",
     green        = "#2ed563",
@@ -52,6 +60,7 @@ M.defaults = {
     light_blue   = "#7BA1D0",
     dark_pink    = "#B376B3",
     pink         = "#f45ab4",
+    light_pink   = "#f19bb6",
     dark_cyan    = "#0c1918",
     cyan         = "#37c3b5",
     light_cyan   = "#6ad8ed",
@@ -60,6 +69,7 @@ M.defaults = {
     purple       = "#be9af7",
     light_purple = "#8372Ba",
     br_yellow    = "#E7C547",
+    purered      = "#ff0000",
 }
 
 M.colors = M.defaults
