@@ -312,14 +312,21 @@ local M = {}
 ---@param colors lemons.Colors
 function M.set(colors)
     local cfg = vim.g.lemons_config or {}
-    local highlights = get_highlights(colors)
+
+    local custom_colors = colors
+    if cfg and cfg.override_colors then
+        custom_colors = vim.tbl_extend("force", colors, cfg.override_colors(colors) or {})
+    end
+
+    local highlights = get_highlights(custom_colors)
     if cfg and cfg.overrides then
-        highlights = vim.tbl_extend("force", highlights, cfg.overrides(colors) or {})
+        highlights = vim.tbl_extend("force", highlights, cfg.overrides(custom_colors) or {})
     end
     for name, val in pairs(highlights) do
         vim.api.nvim_set_hl(0, name, val)
     end
-    set_terminal_colors(colors)
+
+    set_terminal_colors(custom_colors)
 end
 
 return M

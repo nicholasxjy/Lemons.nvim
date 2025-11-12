@@ -39,6 +39,7 @@ end
 ---@class ThemeOptions
 ---@field transparent boolean?
 ---@field overrides fun(colors: lemons.Colors):table<string, any>?
+---@field override_colors fun(colors: lemons.Colors):table<string, any>?
 ---@param opts ThemeOptions?
 function M.setup(opts)
     vim.g.lemons_config = vim.tbl_extend("force", vim.g.lemons_config or {}, default_opts)
