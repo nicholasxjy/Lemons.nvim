@@ -1,9 +1,9 @@
 local M = {}
 
 ---@param c lemons.Colors
-local function get_highlights(c)
-    local cfg = vim.g.lemons_config or {}
-    local bg = cfg.transparent and "NONE" or c.black
+---@param opts ThemeOptions
+local function get_highlights(c, opts)
+    local bg = opts.transparent and "NONE" or c.black
     return {
         Normal = { fg = c.white, bg = bg },
         NormalFloat = { link = "Normal" },
@@ -38,7 +38,7 @@ local function get_highlights(c)
         PmenuExtra = { fg = c.darker_white },
         PmenuSbar = { bg = c.gray },
         PmenuThumb = { bg = c.dark_white },
-        PmenuMatch = { fg = c.purered, bold = true },
+        PmenuMatch = { fg = c.red, bold = true },
         PmenuMatchSel = { bold = true, sp = c.black },
         Question = { fg = c.yellow },
         QuickFixLine = { bold = true, fg = c.yellow },
@@ -59,11 +59,11 @@ local function get_highlights(c)
         WinBarNC = { link = "StatusLineNC" },
 
         Comment = { fg = c.darker_white, italic = true },
-        Function = { fg = c.yellow },
+        Function = { fg = c.light_blue },
         String = { fg = c.green },
         Identifier = { fg = c.white },
         -- StorageClass = { fg = c.white, bold = true },
-        Type = { fg = c.lime, bold = true },
+        Type = { fg = c.yellow, bold = true },
         Constant = { fg = c.pink },
         Boolean = { link = "Number" },
         Character = { link = "Constant" },
@@ -133,15 +133,15 @@ local function get_highlights(c)
         ["@keyword.modifier"] = { fg = c.light_blue, italic = true, bold = true },
         ["@keyword.import"] = { fg = c.light_cyan, bold = true },
         ["@keyword.export"] = { fg = c.light_cyan, bold = true },
-        ["@keyword.return"] = { fg = c.light_yellow, bold = true, italic = true },
+        ["@keyword.return"] = { fg = c.orange, bold = true, italic = true },
         ["@type.builtin"] = { fg = c.cyan, bold = true },
         ["@attribute.builtin"] = { fg = c.cyan },
         ["@function.builtin"] = { fg = c.cyan },
         ["@variable.builtin"] = { fg = c.cranberry },
         ["@variable.parameter.builtin"] = { fg = c.cyan },
         ["@constant.builtin"] = { fg = c.cyan },
-        ["@module.builtin"] = { fg = c.dark_pink, italic = true },
-        ["@module"] = { fg = c.dark_pink, italic = true },
+        ["@module.builtin"] = { fg = c.light_purple, italic = true },
+        ["@module"] = { fg = c.light_purple, italic = true },
         ["@tag.builtin"] = { fg = c.cyan },
         ["@tag.attribute"] = { fg = c.light_cyan, italic = true },
         ["@tag.tsx"] = { fg = c.cyan, bold = true },
@@ -262,7 +262,6 @@ local function get_highlights(c)
         LuaLineDiffChange = { link = "Changed" },
 
         -- snacks.nvim
-        SnacksPickerMatch = { fg = c.purered, bold = true },
 
         SnacksIndentChunkRed = { link = "RainbowDelimiterRed" },
         SnacksIndentChunkOrange = { link = "RainbowDelimiterOrange" },
@@ -310,23 +309,18 @@ end
 
 local M = {}
 ---@param colors lemons.Colors
-function M.set(colors)
-    local cfg = vim.g.lemons_config or {}
+---@param opts ThemeOptions
+function M.set(colors, opts)
+    local highlights = get_highlights(colors, opts)
 
-    local custom_colors = colors
-    if cfg and cfg.override_colors then
-        custom_colors = vim.tbl_extend("force", colors, cfg.override_colors(colors) or {})
-    end
-
-    local highlights = get_highlights(custom_colors)
-    if cfg and cfg.overrides then
-        highlights = vim.tbl_extend("force", highlights, cfg.overrides(custom_colors) or {})
+    if opts and opts.overrides then
+        highlights = vim.tbl_extend("force", highlights, opts.overrides(colors) or {})
     end
     for name, val in pairs(highlights) do
         vim.api.nvim_set_hl(0, name, val)
     end
 
-    set_terminal_colors(custom_colors)
+    set_terminal_colors(colors)
 end
 
 return M

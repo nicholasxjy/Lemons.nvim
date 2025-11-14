@@ -59,7 +59,7 @@ M.defaults = {
     yellow       = "#f0be42",
     dark_blue    = "#2782d4",
     blue         = "#5088ed",
-    light_blue   = "#7BA1D0",
+    light_blue   = "#7aa2f7",
     dark_pink    = "#B376B3",
     pink         = "#f45ab4",
     light_pink   = "#f19bb6",
@@ -69,9 +69,8 @@ M.defaults = {
     brown        = "#99582a",
     navy         = "#3B38A0",
     purple       = "#be9af7",
-    light_purple = "#8372Ba",
+    light_purple = "#9ca7ea",
     br_yellow    = "#E7C547",
-    purered      = "#ff0000",
 }
 
 M.colors = M.defaults
