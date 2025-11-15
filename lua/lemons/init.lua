@@ -1,12 +1,6 @@
 ---@module "lemons"
 local M = {}
-local config = require("lemons.config")
 local hi = require("lemons.highlights")
-
----@param opts? lemons.Config
-function M.setup(opts)
-    M.options = config.setup(opts)
-end
 
 M.defaults = {
     transparent = false,
@@ -24,7 +18,7 @@ function M.load()
 
     local colors = vim.tbl_extend("force", require("lemons.colors"), M.options.override_colors or {})
 
-    require("lemons.highlights").set(colors, M.options)
+    hi.set(colors, M.options)
 end
 
 ---@class ThemeOptions

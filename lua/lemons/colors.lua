@@ -1,3 +1,4 @@
+local M = {}
 ---@class lemons.Colors
 ---@field black string
 ---@field dark_gray string
@@ -34,6 +35,7 @@
 ---@field cranberry string
 ---@field br_green string
 ---@field light_white string
+---@field light_brown string
 -- stylua: ignore
 ---@type lemons.Colors
 M.defaults = {
@@ -46,19 +48,23 @@ M.defaults = {
     white        = "#dacfe4",
     light_white  = "#645775",
     tomato       = "#FF6347",
-    red          = "#ed505e",
+    red          = "#CB4251",
     cranberry    = "#CD5C5C",
     dark_green   = "#0b1b10",
     br_green     = "#9EC410",
     aqua         = "#0fb9e0",
     lime         = "#2ed592",
     green        = "#2ed563",
-    orange       = "#fa8a49",
+    orange       = "#F37A2E",
+    brown        = "#99582a",
+    light_brown  = "#BF9742",
+    navy         = "#3B38A0",
     dark_yellow  = "#1d190d",
     light_yellow = "#ffbe00",
     yellow       = "#f0be42",
+    br_yellow    = "#E7C547",
     dark_blue    = "#2782d4",
-    blue         = "#5088ed",
+    blue         = "#409FFF",
     light_blue   = "#7aa2f7",
     dark_pink    = "#B376B3",
     pink         = "#f45ab4",
@@ -66,11 +72,9 @@ M.defaults = {
     dark_cyan    = "#0c1918",
     cyan         = "#37c3b5",
     light_cyan   = "#6ad8ed",
-    brown        = "#99582a",
-    navy         = "#3B38A0",
+    dark_purple  = "#4C3889",
     purple       = "#be9af7",
     light_purple = "#9ca7ea",
-    br_yellow    = "#E7C547",
 }
 
 M.colors = M.defaults

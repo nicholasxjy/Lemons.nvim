@@ -168,7 +168,7 @@ local function get_highlights(c, opts)
         ["@lsp.type.formatSpecifier"] = { link = "Special" },
         ["@lsp.type.escapeSequence"] = { link = "@string.escape" },
         ["@lsp.mod.callable"] = { link = "Function" },
-        ["@lsp.type.interface"] = { fg = c.brown, bold = true, italic = true },
+        ["@lsp.type.interface"] = { fg = c.light_brown, bold = true, italic = true },
         ["@lsp.type.namespace"] = { link = "@module" },
         ["@lsp.type.enum"] = { fg = c.aqua, bold = true },
         ["@lsp.type.enumMember"] = { fg = c.br_green, bold = true },
@@ -200,7 +200,7 @@ local function get_highlights(c, opts)
         BlinkCmpKindStruct = { fg = c.yellow },
         BlinkCmpKindEnum = { fg = c.aqua },
         BlinkCmpKindEnumMember = { fg = c.br_green },
-        BlinkCmpKindInterface = { fg = c.brown },
+        BlinkCmpKindInterface = { fg = c.light_brown },
 
         BlinkCmpKindModule = { fg = c.light_purple },
         BlinkCmpKindPackage = { fg = c.light_purple },
@@ -310,7 +310,6 @@ function M.set_terminal_colors(c)
     vim.g.terminal_color_15 = c.white
 end
 
-local M = {}
 ---@param colors lemons.Colors
 ---@param opts ThemeOptions
 function M.set(colors, opts)
@@ -323,7 +322,7 @@ function M.set(colors, opts)
         vim.api.nvim_set_hl(0, name, val)
     end
 
-    set_terminal_colors(colors)
+    M.set_terminal_colors(colors)
 end
 
 return M
