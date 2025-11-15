@@ -79,11 +79,4 @@ M.defaults = {
 
 M.colors = M.defaults
 
----@param overrides lemons.ColorsOverride
----@return lemons.Colors
-function M.override(overrides)
-    M.colors = vim.tbl_extend("force", M.defaults, overrides)
-    return M.colors
-end
-
 return M

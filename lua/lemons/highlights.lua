@@ -2,7 +2,7 @@ local M = {}
 
 ---@param c lemons.Colors
 ---@param opts ThemeOptions
-local function get_highlights(c, opts)
+function M.get_highlights(c, opts)
     local bg = opts.transparent and "NONE" or c.black
     return {
         Normal = { fg = c.white, bg = bg },
@@ -308,21 +308,6 @@ function M.set_terminal_colors(c)
     vim.g.terminal_color_13 = c.pink
     vim.g.terminal_color_14 = c.light_cyan
     vim.g.terminal_color_15 = c.white
-end
-
----@param colors lemons.Colors
----@param opts ThemeOptions
-function M.set(colors, opts)
-    local highlights = get_highlights(colors, opts)
-
-    if opts and opts.overrides then
-        highlights = vim.tbl_extend("force", highlights, opts.overrides(colors) or {})
-    end
-    for name, val in pairs(highlights) do
-        vim.api.nvim_set_hl(0, name, val)
-    end
-
-    M.set_terminal_colors(colors)
 end
 
 return M
