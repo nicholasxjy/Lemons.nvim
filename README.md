@@ -30,6 +30,7 @@ Just install with any package manager.
 {
   ---@type lemons.ColorsOverride
   colors_override = {}, -- Override color palette
+  highlights_override = {}, -- Override highlights
   undercurl = false, -- Use undercurl instead of underline
   terminal_colors = true, -- Set terminal colors
   italic_comments = true, -- Italicize comments

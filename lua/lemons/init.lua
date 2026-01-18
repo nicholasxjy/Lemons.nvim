@@ -20,6 +20,9 @@ function M.load()
     local colors = require("lemons.colors").override(M.options.colors_override)
 
     local hls = hi.get_highlights(colors, M.options)
+    if M.options.highlights_override then
+        hls = vim.tbl_deep_extend("force", hls, M.options.highlights_override)
+    end
 
     for key, hl in pairs(hls) do
         vim.api.nvim_set_hl(0, key, hl)
